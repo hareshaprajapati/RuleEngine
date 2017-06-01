@@ -13,10 +13,8 @@ public class Main
 {
     public static void main( String[] args ) throws ParseException {
 
-        // create a singleton container for operations
         Operations operations = Operations.INSTANCE;
 
-        // register new operations with the previously created container
         operations.registerOperation(new And());
         operations.registerOperation(new Or());
         operations.registerOperation(new Equals());
@@ -29,7 +27,8 @@ public class Main
         operations.registerOperation(new LessThanEqual());
         /*Expression ex1 = ExpressionParser.fromString("( PATIENT_TYPE = 'A B' AND  DATE >=  '21-05-2017 15:38:55' AND  LOS > 1 ) OR ( " +
                 "PATIENT_CLASS > 1 )  "); //*/
-        Expression ex1 = ExpressionParser.fromString("( ADMISSION_TYPE = 3.0 OR NOT PATIENT_TYPE IN ( 'A B' , 'C D' ) OR NOT LOS IN ( 2 , 3 )  )" );
+        Expression ex1 = ExpressionParser.fromString("( DOUBLE_VALUE = 2.0 OR NOT STRING_VALUE IN ( 'A B' , 'C C' ) AND NOT INT_VALUE IN ( 2 , 3 ) AND " +
+                "DATE >=  '21-05-2017 15:38:55' )" );
 
         Rule rule1 = new Rule.Builder()
                             .withExpression(ex1)
@@ -40,11 +39,10 @@ public class Main
         rules.addRule(rule1);
 
         Map<String, Object> bindings = new HashMap<>();
-        bindings.put("PATIENT_TYPE", "'C C'");
-        bindings.put("ADMISSION_TYPE", 3.0);
+        bindings.put("STRING_VALUE", "'C C'");
+        bindings.put("DOUBLE_VALUE", 3.0);
         bindings.put("DATE","22-05-2017 15:38:56");
-        bindings.put("LOS",4);
-        bindings.put("PATIENT_CLASS",0);
+        bindings.put("INT_VALUE",0);
         System.out.println(rule1.eval(bindings));
 
     }

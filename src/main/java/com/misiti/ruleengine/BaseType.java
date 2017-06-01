@@ -33,7 +33,7 @@ public class BaseType<T> implements Expression {
 
     public static BaseType<?> getBaseType(String string) throws ParseException {
         if (string == null)
-            throw new IllegalArgumentException("The provided string must not be null");
+            throw new IllegalArgumentException("String must not be null");
 
         if ("true".equals(string) || "false".equals(string))
             return new BaseType<>(Boolean.getBoolean(string), Boolean.class);

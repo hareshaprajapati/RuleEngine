@@ -10,7 +10,6 @@ import java.util.Set;
 
 public enum Operations
 {
-    /** Application of the Singleton pattern using enum **/
     INSTANCE;
 
     private final Map<String, Operation> operations = new HashMap<>();

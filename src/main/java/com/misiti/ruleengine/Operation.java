@@ -33,7 +33,6 @@ public abstract class Operation implements Expression {
             Operation op = operations.getOperation(tokens.get(i));
             if (op != null) {
                 op = op.copy();
-                // we found an operation
                 i = op.parse(tokens, i, stack);
 
                 return i;

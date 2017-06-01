@@ -23,7 +23,7 @@ public class ClosingBracket extends Operation
 
     @Override
     public int parse(List<String> tokens, int pos, Stack<Expression> stack) throws ParseException {
-        Expression left = null; /// stack.pop();
+        Expression left = null;
         int i = findNextExpression(tokens, pos+1, stack);
         if(i == -1){
             return i;

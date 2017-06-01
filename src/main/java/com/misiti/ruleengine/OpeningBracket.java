@@ -20,13 +20,8 @@ public class OpeningBracket extends Operation {
 
     @Override
     public int parse(List<String> tokens, int pos, Stack<Expression> stack) throws ParseException {
-        /*Expression left = null;
-        if (!stack.empty()) {
-            left = stack.pop();
-        }*/
-
         int i = findNextExpression(tokens, pos + 1, stack);
-        Expression left  = null ;// stack.pop();
+        Expression left  = null ;
         i = findNextExpression(tokens, i , stack);
         Expression right = stack.pop();
         this.leftOperand = left;
